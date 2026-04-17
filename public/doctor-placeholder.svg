@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Especialista CHPA">
+  <rect width="1200" height="700" fill="#eef2f7" />
+  <rect x="0" y="0" width="1200" height="180" fill="#dbe6f3" />
+  <circle cx="600" cy="290" r="95" fill="#9fb3c8" />
+  <rect x="420" y="390" width="360" height="210" rx="110" fill="#8ea5bd" />
+  <rect x="520" y="430" width="160" height="170" rx="18" fill="#ffffff" />
+  <path d="M565 430h70l-35 55z" fill="#4a86b7" />
+  <text x="600" y="660" text-anchor="middle" fill="#4a86b7" font-family="Arial, sans-serif" font-size="42" font-weight="700">
+    CHPA
+  </text>
+</svg>

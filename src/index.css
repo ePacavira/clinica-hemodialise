@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  /* Marca CHPA — azul principal #4A86B7 */
+  --color-brand: #4a86b7;
+  --color-brand-dark: #3a6d96;
+  --color-brand-darker: #2d5a78;
+  --color-brand-light: #6ba3d4;
+  --color-surface-muted: #f7f9fc;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  background: #fff;
+}
+
+@keyframes hero-carousel-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-hero-carousel-progress {
+  transform-origin: left center;
+  animation: hero-carousel-progress 7s linear forwards;
+}
