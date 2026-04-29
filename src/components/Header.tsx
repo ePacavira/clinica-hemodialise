@@ -278,12 +278,21 @@ export function Header() {
         onMouseLeave={() => setMegaOpen(false)}
       >
         <div className="mx-auto flex min-h-[72px] w-full max-w-[1320px] items-center justify-between px-4 py-5 md:min-h-[80px] md:px-6 md:py-6">
-          <Link to={paths.home} className="flex items-center gap-3">
-            <img
-              src="/logo-white.png"
-              alt="CHPA"
-              className="h-10 w-auto md:h-12"
-            />
+          <Link to={paths.home} className="flex items-center gap-2">
+            <span
+              className="group flex h-10 justify-end items-center overflow-hidden rounded-md bg-white shadow-sm ring-1 ring-slate-200/80 transition-[max-width] duration-300 ease-out max-w-10 group-hover:max-w-104"
+            >
+              <span className="whitespace-nowrap px-3 text-xs font-semibold text-slate-900 opacity-0 max-w-0 overflow-hidden transition-[max-width,opacity] duration-200 group-hover:opacity-100 group-hover:max-w-88">
+                Centro de Hemodiálise Pluribus Africa
+              </span>
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center">
+                <img
+                  src="/logo.png"
+                  alt="CHPA"
+                  className="h-7 w-auto md:h-8"
+                />
+              </span>
+            </span>
             <span className="text-lg font-extrabold tracking-wide text-white md:text-xl">
               CHPA
             </span>
