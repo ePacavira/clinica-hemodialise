@@ -1,5 +1,6 @@
-import { paths } from '../routes/paths'
 import type { Language } from '../i18n/I18nContext'
+import { paths } from '../routes/paths'
+import { hospitalMedia } from './siteMedia'
 
 export type HeroSlide = {
   id: string
@@ -20,9 +21,8 @@ export const heroSlidesByLanguage: Record<Language, HeroSlide[]> = {
         'Hemodiálise, nefrologia e cirurgia vascular — equipa multidisciplinar em Luanda.',
       ctaLabel: 'Conhecer serviços',
       ctaTo: paths.servicos,
-      image:
-        'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=1920&q=80',
-      imageAlt: 'Estetoscópio e ambiente clínico',
+      image: hospitalMedia.wide0,
+      imageAlt: 'Instalações e ambiente clínico do CHPA',
     },
     {
       id: '2',
@@ -31,9 +31,8 @@ export const heroSlidesByLanguage: Record<Language, HeroSlide[]> = {
         'Tratamento de substituição renal com protocolos alinhados às melhores práticas.',
       ctaLabel: 'Saber mais sobre hemodiálise',
       ctaTo: paths.hemodialise,
-      image:
-        'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1920&q=80',
-      imageAlt: 'Unidade de hemodiálise',
+      image: hospitalMedia.unit6,
+      imageAlt: 'Unidade de cuidados do CHPA',
     },
     {
       id: '3',
@@ -42,9 +41,8 @@ export const heroSlidesByLanguage: Record<Language, HeroSlide[]> = {
         'Fístula arteriovenosa, Doppler e plano Life-Plan com equipa dedicada.',
       ctaLabel: 'Acessos vasculares',
       ctaTo: paths.acessosVasculares,
-      image:
-        'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=1920&q=80',
-      imageAlt: 'Cuidados especializados',
+      image: hospitalMedia.unit7,
+      imageAlt: 'Equipa e cuidados especializados no CHPA',
     },
     {
       id: '4',
@@ -53,9 +51,8 @@ export const heroSlidesByLanguage: Record<Language, HeroSlide[]> = {
         'Pedido online com confirmação — nefrologia, acesso vascular e outras especialidades.',
       ctaLabel: 'Marcação de consulta',
       ctaTo: paths.marcacao,
-      image:
-        'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1920&q=80',
-      imageAlt: 'Receção e atendimento no centro de saúde',
+      image: hospitalMedia.wide1,
+      imageAlt: 'Receção e atendimento no CHPA',
     },
   ],
   en: [
@@ -66,9 +63,8 @@ export const heroSlidesByLanguage: Record<Language, HeroSlide[]> = {
         'Hemodialysis, nephrology and vascular surgery with a multidisciplinary team in Luanda.',
       ctaLabel: 'Explore services',
       ctaTo: paths.servicos,
-      image:
-        'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=1920&q=80',
-      imageAlt: 'Stethoscope in a clinical setting',
+      image: hospitalMedia.wide0,
+      imageAlt: 'CHPA clinical facilities',
     },
     {
       id: '2',
@@ -77,9 +73,8 @@ export const heroSlidesByLanguage: Record<Language, HeroSlide[]> = {
         'Renal replacement therapy supported by clinical best-practice protocols.',
       ctaLabel: 'Learn about hemodialysis',
       ctaTo: paths.hemodialise,
-      image:
-        'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1920&q=80',
-      imageAlt: 'Hemodialysis unit',
+      image: hospitalMedia.unit6,
+      imageAlt: 'CHPA care unit',
     },
     {
       id: '3',
@@ -88,9 +83,8 @@ export const heroSlidesByLanguage: Record<Language, HeroSlide[]> = {
         'Arteriovenous fistula, Doppler and Life-Plan strategy with a dedicated team.',
       ctaLabel: 'Vascular access',
       ctaTo: paths.acessosVasculares,
-      image:
-        'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=1920&q=80',
-      imageAlt: 'Specialized healthcare',
+      image: hospitalMedia.unit7,
+      imageAlt: 'Specialized care at CHPA',
     },
     {
       id: '4',
@@ -99,9 +93,8 @@ export const heroSlidesByLanguage: Record<Language, HeroSlide[]> = {
         'Online request with confirmation for nephrology, vascular access and other specialties.',
       ctaLabel: 'Book appointment',
       ctaTo: paths.marcacao,
-      image:
-        'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1920&q=80',
-      imageAlt: 'Healthcare reception and service desk',
+      image: hospitalMedia.wide1,
+      imageAlt: 'CHPA reception and patient services',
     },
   ],
 }

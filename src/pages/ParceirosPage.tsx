@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { eventosMedia } from '../data/siteMedia'
 import { useI18n } from '../i18n/I18nContext'
 import { paths } from '../routes/paths'
 
@@ -92,7 +93,7 @@ export function ParceirosPage() {
         </div>
         <div className="relative overflow-hidden border border-slate-200 bg-white">
           <img
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
+            src={eventosMedia.gathering}
             alt={copy.title}
             className="h-[230px] w-full object-cover md:h-[320px]"
             loading="eager"

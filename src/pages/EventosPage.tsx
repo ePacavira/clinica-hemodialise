@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n/I18nContext'
+import { eventosMedia } from '../data/siteMedia'
 import { paths } from '../routes/paths'
 
 export function EventosPage() {
@@ -11,6 +12,7 @@ export function EventosPage() {
       audience: 'Profissionais de saúde',
       description:
         'Sessão prática sobre planeamento, manutenção e vigilância do acesso vascular em doentes renais.',
+      image: eventosMedia.sessionA,
     },
     {
       title: 'Encontro de Educação para Doentes Renais',
@@ -18,6 +20,7 @@ export function EventosPage() {
       audience: 'Doentes e familiares',
       description:
         'Orientações sobre adesão terapêutica, alimentação e sinais de alerta no percurso da doença renal.',
+      image: eventosMedia.sessionB,
     },
     {
       title: 'Mesa Técnica: Segurança e Qualidade Assistencial',
@@ -25,6 +28,7 @@ export function EventosPage() {
       audience: 'Equipa clínica e parceiros',
       description:
         'Debate de indicadores assistenciais, protocolos internos e melhoria contínua em nefrologia e hemodiálise.',
+      image: eventosMedia.sessionC,
     },
   ]
   const copy =
@@ -75,7 +79,7 @@ export function EventosPage() {
         </div>
         <div className="relative overflow-hidden border border-slate-200 bg-white">
           <img
-            src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1600&q=80"
+            src={eventosMedia.banner}
             alt={copy.title}
             className="h-[230px] w-full object-cover md:h-[320px]"
             loading="eager"
@@ -98,14 +102,22 @@ export function EventosPage() {
               {upcomingEvents.map((event) => (
                 <article
                   key={event.title}
-                  className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
+                  className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm"
                 >
+                  <img
+                    src={event.image}
+                    alt=""
+                    className="h-44 w-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="p-5">
                   <p className="text-xs font-semibold uppercase tracking-wide text-brand">{event.date}</p>
                   <h3 className="mt-2 text-lg font-semibold text-slate-900">{event.title}</h3>
                   <p className="mt-2 text-sm font-medium text-slate-500">
                     {copy.audience}: {event.audience}
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-slate-600">{event.description}</p>
+                  </div>
                 </article>
               ))}
             </div>

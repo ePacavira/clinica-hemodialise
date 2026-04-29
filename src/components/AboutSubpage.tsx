@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import { hospitalMedia } from '../data/siteMedia'
 import { useI18n } from '../i18n/I18nContext'
 import { paths } from '../routes/paths'
 
@@ -263,42 +264,42 @@ export function AboutSubpage({ type }: Props) {
     { src: string; alt: string }
   > = {
     sobre: {
-      src: '/sobre-nos/sobre-nos.jpg',
+      src: hospitalMedia.wide0,
       alt:
         language === 'en'
           ? 'Healthcare professionals in a modern clinical environment'
           : 'Profissionais de saúde em ambiente clínico moderno',
     },
     historia: {
-      src: '/sobre-nos/historia.jpg',
+      src: hospitalMedia.hall12,
       alt:
         language === 'en'
           ? 'Institutional building representing CHPA history'
           : 'Edifício institucional representando a história do CHPA',
     },
     direcao: {
-      src: '/sobre-nos/direcao.jpg',
+      src: hospitalMedia.hall13,
       alt:
         language === 'en'
           ? 'Leadership team in a strategic meeting'
           : 'Equipa de direção em reunião estratégica',
     },
     qualidade: {
-      src: '/sobre-nos/qualidade.jpg',
+      src: hospitalMedia.interior14,
       alt:
         language === 'en'
           ? 'Clinical quality and safety process review'
           : 'Revisão de processos de qualidade e segurança clínica',
     },
     privacidade: {
-      src: '/sobre-nos/privacidade.jpg',
+      src: hospitalMedia.corridor2,
       alt:
         language === 'en'
           ? 'Data privacy and security concept'
           : 'Conceito de privacidade e segurança de dados',
     },
     educacao: {
-      src: '/sobre-nos/educacao.jpg',
+      src: hospitalMedia.unit6,
       alt:
         language === 'en'
           ? 'Health education session between professional and patient'

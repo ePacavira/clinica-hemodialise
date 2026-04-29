@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { teamBySpecialty } from '../data/content'
+import { hospitalMedia } from '../data/siteMedia'
 import { useI18n } from '../i18n/I18nContext'
 import { paths } from '../routes/paths'
 
@@ -115,8 +116,7 @@ const serviceBySlug: Record<string, ServiceContent> = {
     team: ['Cirurgia vascular', 'Nefrologia', 'Enfermagem especializada'],
     interventionAreas: ['FAV', 'Cateteres', 'Preservação venosa'],
     whereToFind: ['CHPA - Consulta de acessos vasculares', 'Referência interna da unidade', 'Atendimento por marcação'],
-    image:
-      'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1400&q=80',
+    image: hospitalMedia.unit7,
   },
   cardiologia: {
     title: 'Cardiologia',
@@ -148,8 +148,7 @@ const serviceBySlug: Record<string, ServiceContent> = {
     team: ['Cardiologia', 'Nefrologia'],
     interventionAreas: ['Hipertensão', 'Insuficiência cardíaca', 'Prevenção cardiovascular'],
     whereToFind: ['CHPA - Apoio especializado', 'Consulta com agendamento prévio', 'Via marcação e referência clínica'],
-    image:
-      'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=1400&q=80',
+    image: hospitalMedia.wide1,
   },
   nutricao: {
     title: 'Nutrição',
@@ -181,8 +180,7 @@ const serviceBySlug: Record<string, ServiceContent> = {
     team: ['Nutricionista clínica', 'Nefrologia'],
     interventionAreas: ['DRC', 'Desequilíbrios metabólicos', 'Educação alimentar'],
     whereToFind: ['CHPA - Nutrição clínica', 'Agendamento via equipa assistencial', 'Acompanhamento integrado'],
-    image:
-      'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1400&q=80',
+    image: hospitalMedia.interior14,
   },
   psicologia: {
     title: 'Psicologia',
@@ -214,8 +212,7 @@ const serviceBySlug: Record<string, ServiceContent> = {
     team: ['Psicologia clínica', 'Nefrologia', 'Enfermagem'],
     interventionAreas: ['Ansiedade e adaptação', 'Adesão terapêutica', 'Bem-estar emocional'],
     whereToFind: ['CHPA - Apoio psicológico', 'Marcação por referência interna', 'Atendimento com agendamento'],
-    image:
-      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1400&q=80',
+    image: hospitalMedia.corridor2,
   },
   'medicina-intensiva': {
     title: 'Medicina Intensiva',
@@ -247,8 +244,7 @@ const serviceBySlug: Record<string, ServiceContent> = {
     team: ['Medicina intensiva', 'Nefrologia', 'Equipa multidisciplinar'],
     interventionAreas: ['Situações agudas', 'Estabilização clínica', 'Coordenação assistencial'],
     whereToFind: ['CHPA - Referência clínica interna', 'Encaminhamento por equipa médica', 'Atendimento conforme indicação'],
-    image:
-      'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1400&q=80',
+    image: hospitalMedia.hall13,
   },
   'cuidados-domiciliarios': {
     title: 'Cuidados Domiciliários',
@@ -280,8 +276,7 @@ const serviceBySlug: Record<string, ServiceContent> = {
     team: ['Equipa domiciliária', 'Nefrologia', 'Enfermagem'],
     interventionAreas: ['Seguimento no domicílio', 'Continuidade assistencial', 'Apoio à família'],
     whereToFind: ['CHPA - Programa domiciliário', 'Ativação por avaliação médica', 'Coordenação central na unidade'],
-    image:
-      'https://images.unsplash.com/photo-1580281658629-2f6f7f780db8?auto=format&fit=crop&w=1400&q=80',
+    image: hospitalMedia.wide0,
   },
 }
 

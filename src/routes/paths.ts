@@ -38,14 +38,12 @@ export function servicePath(slug: string) {
   return `${paths.servicoDetalheBase}/${slug}`
 }
 
-/** Ordem alinhada a `navItems` no header (Início … Contactos). */
+/** Ordem alinhada a `navItems` no header (cada item pode agrupar várias rotas no mega menu). */
 export const navPaths = [
   paths.home,
   paths.quemSomos,
   paths.servicos,
   paths.investigacao,
-  paths.parceiros,
   paths.eventos,
-  paths.assistenciaSocial,
   paths.contactos,
 ] as const

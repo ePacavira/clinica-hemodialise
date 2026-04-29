@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n/I18nContext'
 import { paths } from '../routes/paths'
 
-const CLINIC_EMAIL = 'recepcao@chpa.co.ao'
+const CLINIC_EMAIL = 'recepcao@chpa-ao.com'
 const WHATSAPP_E164 = '244222385730'
 
 type ChatRole = 'user' | 'assistant'

@@ -9,10 +9,8 @@ type MegaKey =
   | 'chpa'
   | 'about'
   | 'services'
-  | 'research'
-  | 'partners'
-  | 'events'
-  | 'social'
+  | 'researchPartners'
+  | 'community'
   | 'contacts'
 
 type MegaColumn = {
@@ -91,7 +89,7 @@ const megaServices: MegaColumn[] = [
   },
 ]
 
-const megaResearch: MegaColumn[] = [
+const megaResearchPartners: MegaColumn[] = [
   {
     title: 'Investigação',
     links: [
@@ -101,9 +99,6 @@ const megaResearch: MegaColumn[] = [
       { label: 'Formação', to: paths.investigacao },
     ],
   },
-]
-
-const megaPartners: MegaColumn[] = [
   {
     title: 'Parcerias',
     links: [
@@ -114,7 +109,7 @@ const megaPartners: MegaColumn[] = [
   },
 ]
 
-const megaEvents: MegaColumn[] = [
+const megaCommunity: MegaColumn[] = [
   {
     title: 'Eventos',
     links: [
@@ -122,9 +117,6 @@ const megaEvents: MegaColumn[] = [
       { label: 'Formações e encontros', to: paths.eventos },
     ],
   },
-]
-
-const megaSocial: MegaColumn[] = [
   {
     title: 'Assistência Social',
     links: [
@@ -154,14 +146,10 @@ function columnsForKey(key: MegaKey): MegaColumn[] {
       return megaAbout
     case 'services':
       return megaServices
-    case 'research':
-      return megaResearch
-    case 'partners':
-      return megaPartners
-    case 'events':
-      return megaEvents
-    case 'social':
-      return megaSocial
+    case 'researchPartners':
+      return megaResearchPartners
+    case 'community':
+      return megaCommunity
     case 'contacts':
       return megaContacts
     default:
@@ -173,10 +161,8 @@ const navIndexToMega: MegaKey[] = [
   'chpa',
   'about',
   'services',
-  'research',
-  'partners',
-  'events',
-  'social',
+  'researchPartners',
+  'community',
   'contacts',
 ]
 
@@ -304,7 +290,7 @@ export function Header() {
           </Link>
 
           <nav
-            className="hidden items-center gap-6 lg:flex xl:gap-9"
+            className="hidden items-center gap-4 lg:flex xl:gap-6"
             aria-label="Navegacao principal"
           >
             {navItems.map((item, idx) => (
@@ -319,7 +305,7 @@ export function Header() {
                   setActiveMegaKey(navIndexToMega[idx] ?? 'chpa')
                   setMegaOpen(true)
                 }}
-                className={`text-base font-medium text-white/90 transition-colors duration-200 hover:text-white hover:underline ${
+                className={`text-sm font-medium text-white/90 transition-colors duration-200 hover:text-white hover:underline ${
                   idx === 0 ? 'text-white' : ''
                 }`}
               >

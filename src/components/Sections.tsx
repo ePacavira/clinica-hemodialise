@@ -22,6 +22,7 @@ import {
   teamBySpecialty,
   units,
 } from '../data/content'
+import { eventosMedia, hospitalMedia } from '../data/siteMedia'
 import { useI18n } from '../i18n/I18nContext'
 import { paths, servicePath, serviceSlugs } from '../routes/paths'
 
@@ -36,6 +37,62 @@ const iconMap = {
   Brain,
   Home,
 } as const
+
+/** Ícone do cartão de marcação: Dra. → feminino, Dr. → masculino. */
+function specialistAvatarKind(name: string): 'female' | 'male' | 'neutral' {
+  const t = name.trim()
+  if (!t) return 'neutral'
+  if (/^dra\.?\s/i.test(t)) return 'female'
+  if (/^dr\.?\s/i.test(t)) return 'male'
+  return 'neutral'
+}
+
+/** Silhueta minimalista (cabeça + ombros), estilo avatar genérico. */
+function SpecialistSilhouette({
+  kind,
+  className = '',
+}: {
+  kind: 'female' | 'male' | 'neutral'
+  className?: string
+}) {
+  const shared = 'h-[4.75rem] w-[4.75rem] shrink-0'
+  if (kind === 'female') {
+    return (
+      <svg
+        className={`${shared} ${className}`}
+        viewBox="0 0 48 48"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden
+      >
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M24 3.5C17.2 3.5 11.5 8.1 11.5 14.5c0 1.4.3 2.8.8 4C13.8 13.6 18.4 10 24 10s10.2 3.6 11.7 8.5c.5-1.2.8-2.6.8-4 0-6.4-5.7-11-12.5-11Z"
+        />
+        <circle cx="24" cy="19" r="8.25" fill="currentColor" />
+        <path
+          fill="currentColor"
+          d="M24 27.25c-6.2 0-11.25 4.2-11.25 10.5V44.5h22.5V37.75c0-6.3-5.05-10.5-11.25-10.5Z"
+        />
+      </svg>
+    )
+  }
+  return (
+    <svg
+      className={`${shared} ${className}`}
+      viewBox="0 0 48 48"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <circle cx="24" cy="15" r="8.5" fill="currentColor" />
+      <path
+        fill="currentColor"
+        d="M24 24.5c-6.8 0-12.25 4.6-12.25 11.25V44.5h24.5V35.75c0-6.65-5.45-11.25-12.25-11.25Z"
+      />
+    </svg>
+  )
+}
 
 export function HeroSection() {
   return (
@@ -71,7 +128,7 @@ export function HeroSection() {
 
         <div className="md:col-span-6">
           <img
-            src="https://images.unsplash.com/photo-1666214280780-f8b87ef77f6f?auto=format&fit=crop&w=1200&q=80"
+            src={hospitalMedia.wide0}
             alt="Equipa e ambiente de cuidados de saúde no CHPA"
             className="h-[420px] w-full rounded-2xl object-cover shadow-lg"
             fetchPriority="high"
@@ -303,8 +360,8 @@ export function VascularAccessSection() {
 
           <div className="flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
             <img
-              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80"
-              alt="Dra. Vanessa Pinto — cirurgia vascular"
+              src={hospitalMedia.unit7}
+              alt="Cirurgia vascular e cuidados no CHPA"
               className="h-44 w-full object-cover"
               loading="lazy"
             />
@@ -429,7 +486,6 @@ export function BookingSection() {
       availability: string
       days: string
       availableWeekdays: number[]
-      photo: string
     }
   > = {
     'Dr. Matadi Daniel': {
@@ -438,8 +494,6 @@ export function BookingSection() {
       availability: 'Atendimento por marcação',
       days: 'Segunda, Quarta e Sexta',
       availableWeekdays: [1, 3, 5],
-      photo:
-        'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80',
     },
     'Dra. Honorata Tito': {
       area: 'Nefrologia',
@@ -447,8 +501,6 @@ export function BookingSection() {
       availability: 'Atendimento por marcação',
       days: 'Terça e Quinta',
       availableWeekdays: [2, 4],
-      photo:
-        'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80',
     },
     'Dra. Henriqueta Nanduva': {
       area: 'Nefrologia',
@@ -456,8 +508,6 @@ export function BookingSection() {
       availability: 'Atendimento por marcação',
       days: 'Segunda a Quinta',
       availableWeekdays: [1, 2, 3, 4],
-      photo:
-        'https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=900&q=80',
     },
     'Dra. Maria Isabel Casimiro': {
       area: 'Nefrologia',
@@ -465,8 +515,6 @@ export function BookingSection() {
       availability: 'Atendimento por marcação',
       days: 'Terça, Quinta e Sexta',
       availableWeekdays: [2, 4, 5],
-      photo:
-        'https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=900&q=80',
     },
     'Dra. Leonor Fortes': {
       area: 'Nefrologia',
@@ -474,8 +522,6 @@ export function BookingSection() {
       availability: 'Atendimento por marcação',
       days: 'Segunda e Quarta',
       availableWeekdays: [1, 3],
-      photo:
-        'https://images.unsplash.com/photo-1612277795421-9bc7706a4a41?auto=format&fit=crop&w=900&q=80',
     },
     'Dra. Zilla Cerqueira': {
       area: 'Nefrologia',
@@ -483,8 +529,6 @@ export function BookingSection() {
       availability: 'Atendimento por marcação',
       days: 'Quarta e Sexta',
       availableWeekdays: [3, 5],
-      photo:
-        'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=900&q=80',
     },
     'Dra. Maria Gonçalves': {
       area: 'Cardiologia',
@@ -492,8 +536,6 @@ export function BookingSection() {
       availability: 'Atendimento por marcação',
       days: 'Terça e Sexta',
       availableWeekdays: [2, 5],
-      photo:
-        'https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?auto=format&fit=crop&w=900&q=80',
     },
     'Dra. Eliza Nogueira': {
       area: 'Medicina Intensiva',
@@ -501,8 +543,6 @@ export function BookingSection() {
       availability: 'Atendimento por marcação',
       days: 'Segunda a Sexta',
       availableWeekdays: [1, 2, 3, 4, 5],
-      photo:
-        'https://images.unsplash.com/photo-1659353884710-8b200ea0fced?auto=format&fit=crop&w=900&q=80',
     },
     'Dra. Mária João': {
       area: 'Nutrição',
@@ -510,8 +550,6 @@ export function BookingSection() {
       availability: 'Atendimento por marcação',
       days: 'Quarta e Quinta',
       availableWeekdays: [3, 4],
-      photo:
-        'https://images.unsplash.com/photo-1591604021695-0c69b7c05981?auto=format&fit=crop&w=900&q=80',
     },
     'Dra. Vanessa Pinto': {
       area: 'Cirurgia Vascular',
@@ -519,8 +557,6 @@ export function BookingSection() {
       availability: 'Atendimento por marcação',
       days: 'Terça e Quinta',
       availableWeekdays: [2, 4],
-      photo:
-        'https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?auto=format&fit=crop&w=900&q=80',
     },
   }
   const selectedSpecialistProfile =
@@ -530,8 +566,6 @@ export function BookingSection() {
       availability: 'Definido após triagem clínica',
       days: 'A confirmar após triagem',
       availableWeekdays: [1, 2, 3, 4, 5],
-      photo:
-        'https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=900&q=80',
     }
   const weekdayLabels = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
   const availableWeekdays = selectedSpecialistProfile.availableWeekdays
@@ -573,6 +607,8 @@ export function BookingSection() {
     }
   }, [availableWeekdays, form.appointmentDate])
 
+  const specialistIconKind = specialistAvatarKind(form.specialist)
+
   return (
     <section className="bg-white py-16 md:py-24">
       <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6">
@@ -606,19 +642,24 @@ export function BookingSection() {
               </div>
 
               <div className="mt-4 rounded-xl border border-slate-200 bg-white p-5">
-                <img
-                  src={selectedSpecialistProfile.photo}
-                  alt={form.specialist || 'Especialista da equipa clínica CHPA'}
-                  className="h-44 w-full rounded-lg bg-slate-100 object-cover object-top"
-                  loading="lazy"
-                  decoding="async"
-                  onError={(e) => {
-                    const target = e.currentTarget
-                    if (!target.src.endsWith('/doctor-placeholder.svg')) {
-                      target.src = '/doctor-placeholder.svg'
-                    }
-                  }}
-                />
+                <div
+                  className="flex h-44 w-full items-center justify-center rounded-lg bg-slate-100 ring-1 ring-slate-200/80"
+                  role={form.specialist ? 'img' : undefined}
+                  aria-hidden={!form.specialist}
+                  aria-label={
+                    form.specialist
+                      ? `Representação do especialista ${form.specialist}`
+                      : undefined
+                  }
+                >
+                  {specialistIconKind === 'female' ? (
+                    <SpecialistSilhouette kind="female" className="text-rose-500" />
+                  ) : specialistIconKind === 'male' ? (
+                    <SpecialistSilhouette kind="male" className="text-brand-dark" />
+                  ) : (
+                    <SpecialistSilhouette kind="neutral" className="text-brand/55" />
+                  )}
+                </div>
                 <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
                   Especialista selecionado
                 </p>
@@ -988,8 +1029,8 @@ export function DigitalSection() {
         </div>
         <div className="md:col-span-6">
           <img
-            src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=900&q=80"
-            alt="Aplicação e serviços digitais no telemóvel"
+            src={hospitalMedia.corridor2}
+            alt="Serviços digitais e acompanhamento no CHPA"
             className="mx-auto h-[420px] rounded-3xl object-cover shadow-lg"
             loading="lazy"
           />
@@ -1068,57 +1109,49 @@ const mosaicItemsByLanguage: Record<
       title: 'Quem somos',
       subtitle: 'Conheça a missão, visão e valores do CHPA e a nossa abordagem humanizada.',
       cta: 'Ver detalhes',
-      image:
-        'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1200&q=80',
+      image: hospitalMedia.wide0,
     },
     {
       title: 'Serviços',
       subtitle: 'Oferta clínica integrada da nefrologia ao acompanhamento continuado.',
       cta: 'Ver serviços',
-      image:
-        'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1200&q=80',
+      image: hospitalMedia.wide1,
     },
     {
       title: 'Hemodiálise',
       subtitle: 'Saiba como funciona o tratamento, a equipa envolvida e o acompanhamento.',
       cta: 'Saber mais',
-      image:
-        'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80',
+      image: hospitalMedia.unit6,
     },
     {
       title: 'Acessos vasculares',
       subtitle: 'Fístula, Doppler e plano de preservação venosa para hemodiálise segura.',
       cta: 'Conhecer área',
-      image:
-        'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=80',
+      image: hospitalMedia.unit7,
     },
     {
       title: 'Equipa clínica',
       subtitle: 'Especialistas de referência em nefrologia, cirurgia vascular e apoio multidisciplinar.',
       cta: 'Ver equipa',
-      image:
-        'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80',
+      image: hospitalMedia.hall12,
     },
     {
       title: 'Marcação',
       subtitle: 'Pedido de consulta online com resposta rápida da nossa equipa.',
       cta: 'Marcar consulta',
-      image:
-        'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=1200&q=80',
+      image: hospitalMedia.hall13,
     },
     {
       title: 'Unidades',
       subtitle: 'Localização e contactos da unidade CHPA em Luanda.',
       cta: 'Ver localização',
-      image:
-        'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80',
+      image: hospitalMedia.interior14,
     },
     {
       title: 'Canal digital',
       subtitle: 'Área do doente, telemedicina e apoio digital para maior proximidade.',
       cta: 'Explorar',
-      image:
-        'https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=80',
+      image: hospitalMedia.corridor2,
     },
   ],
   en: [
@@ -1126,57 +1159,49 @@ const mosaicItemsByLanguage: Record<
       title: 'About us',
       subtitle: 'Learn about CHPA mission, vision and values and our humanized approach.',
       cta: 'See details',
-      image:
-        'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1200&q=80',
+      image: hospitalMedia.wide0,
     },
     {
       title: 'Services',
       subtitle: 'Integrated clinical offer from nephrology to ongoing follow-up.',
       cta: 'See services',
-      image:
-        'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1200&q=80',
+      image: hospitalMedia.wide1,
     },
     {
       title: 'Hemodialysis',
       subtitle: 'Understand treatment flow, clinical team and patient monitoring.',
       cta: 'Learn more',
-      image:
-        'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80',
+      image: hospitalMedia.unit6,
     },
     {
       title: 'Vascular access',
       subtitle: 'Fistula, Doppler and long-term venous preservation strategy.',
       cta: 'Explore area',
-      image:
-        'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=80',
+      image: hospitalMedia.unit7,
     },
     {
       title: 'Clinical team',
       subtitle: 'Reference specialists in nephrology, vascular surgery and multidisciplinary support.',
       cta: 'See team',
-      image:
-        'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80',
+      image: hospitalMedia.hall12,
     },
     {
       title: 'Booking',
       subtitle: 'Online appointment request with a quick response from our team.',
       cta: 'Book now',
-      image:
-        'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=1200&q=80',
+      image: hospitalMedia.hall13,
     },
     {
       title: 'Units',
       subtitle: 'Location and contact details for CHPA unit in Luanda.',
       cta: 'See location',
-      image:
-        'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80',
+      image: hospitalMedia.interior14,
     },
     {
       title: 'Digital channel',
       subtitle: 'Patient area, telemedicine and digital support for closer care.',
       cta: 'Explore',
-      image:
-        'https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=80',
+      image: hospitalMedia.corridor2,
     },
   ],
 }
@@ -1274,24 +1299,21 @@ export function HealthWellbeingSection() {
             author: 'André de Sousa Machado',
             date: 'March 23, 2026',
             to: paths.educacao,
-            image:
-              'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=80',
+            image: hospitalMedia.hall12,
           },
           {
             title: 'Obesity and new treatments',
             author: 'Barbara Filipa Araújo',
             date: 'March 16, 2026',
             to: paths.educacao,
-            image:
-              'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80',
+            image: hospitalMedia.unit7,
           },
           {
             title: 'Healthy recipes to welcome spring',
             author: '',
             date: 'March 9, 2026',
             to: paths.educacao,
-            image:
-              'https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=900&q=80',
+            image: eventosMedia.sessionB,
           },
         ]
       : [
@@ -1300,24 +1322,21 @@ export function HealthWellbeingSection() {
             author: 'André de Sousa Machado',
             date: '23 de março de 2026',
             to: paths.educacao,
-            image:
-              'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=80',
+            image: hospitalMedia.hall12,
           },
           {
             title: 'Obesidade e novos tratamentos',
             author: 'Barbara Filipa Araújo',
             date: '16 de março de 2026',
             to: paths.educacao,
-            image:
-              'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80',
+            image: hospitalMedia.unit7,
           },
           {
             title: 'Receitas saudáveis para dar as boas-vindas à primavera',
             author: '',
             date: '9 de março de 2026',
             to: paths.educacao,
-            image:
-              'https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=900&q=80',
+            image: eventosMedia.sessionB,
           },
         ]
   const sectionTitle =

@@ -41,7 +41,7 @@ export function ContactosPage() {
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                     E-mail
                   </p>
-                  <p className="mt-0.5 text-[15px] leading-6">recepcao@chpa.co.ao</p>
+                  <p className="mt-0.5 text-[15px] leading-6">recepcao@chpa-ao.com</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">

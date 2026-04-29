@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { hospitalMedia } from '../data/siteMedia'
 import { useI18n } from '../i18n/I18nContext'
 import { paths } from '../routes/paths'
 
@@ -69,7 +70,7 @@ export function AssistenciaSocialPage() {
         </div>
         <div className="relative overflow-hidden border border-slate-200 bg-white">
           <img
-            src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80"
+            src={hospitalMedia.interior14}
             alt={copy.title}
             className="h-[230px] w-full object-cover md:h-[320px]"
             loading="eager"
